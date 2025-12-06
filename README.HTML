@@ -1,66 +1,219 @@
-Deliverables
-All deliverables must be submitted via the Google Classroom.
-1. Final Source Code
-a) Complete Source Code: The final, working source code for the entire project.
-i. It may either be a zip file OR the link to the project’s GitHub repository
-2. Executable/Deployed Project
-a) Executable: Provide the compiled executable file(s) or the URL to the
-deployed application (if web/mobile-based). The deployed version must
-remain accessible for evaluation.
-3. User Manual (Bonus Task)
-A brief document detailing how a general user would install and operate the final
-product. Include a walkthrough of the main features.
-4. Final Presentation/Demonstration
-Live Demo: A final demonstration of the working project (details to be
-announced separately). You must showcase the main features and explain the
-system's architecture and design choices.
-Evaluation Criteria
-The project will be graded based on the following criteria:
-Criteria Weightage Description
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Sentiment Analyzer - User Manual</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        h1 { margin: 0; }
+        h2 { color: var(--primary-color); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+        h3 { color: #555; margin-top: 20px; }
+        code {
+            background: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .note {
+            background-color: #e8f4fd;
+            border-left: 5px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .step {
+            margin-bottom: 20px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--accent-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
 
-(%)
+<div class="container">
+    <header>
+        <h1>Crypto News & Sentiment Impact Analyzer</h1>
+        <p>Semester Project - Implementation & User Manual</p>
+    </header>
 
-Functionality &
-Completeness
+    <section id="introduction">
+        <h2>1. Project Overview</h2>
+        <p>
+            The <strong>Crypto Sentiment Analyzer</strong> is a software tool designed to help traders and investors understand market psychology. 
+            It leverages advanced Natural Language Processing (NLP) techniques to analyze financial news and user-provided text, determining whether the sentiment is 
+            <span style="color: green; font-weight: bold;">Positive</span>, 
+            <span style="color: red; font-weight: bold;">Negative</span>, or 
+            <span style="color: gray; font-weight: bold;">Neutral</span>.
+        </p>
+        <p>
+            This project fulfills the requirements for both <strong>Information Retrieval (IR)</strong> and <strong>Software Engineering (SE)</strong> courses 
+            by combining custom IR algorithms (TF-IDF Ranking) with a robust SE architecture (Layered Pattern, Factory Design Pattern).
+        </p>
+    </section>
 
-85 The extent to which the final system meets the
-requirements in the SRS. All core features must
-work correctly and reliably.
+    <section id="installation">
+        <h2>2. Installation Guide</h2>
+        <p>Follow these steps to set up the project on your local machine.</p>
 
-Code Quality &
-Maintainability
+        <div class="step">
+            <span class="step-number">1</span>
+            <strong>Prerequisites</strong>
+            <p>Ensure you have <a href="https://www.python.org/downloads/">Python 3.10+</a> installed. You can check by running:</p>
+            <pre>python --version</pre>
+        </div>
 
-15 Code must be readable, consistent, and well-
-commented. The solution must demonstrate strong
+        <div class="step">
+            <span class="step-number">2</span>
+            <strong>Unzip & Navigate</strong>
+            <p>Extract the project folder and open your terminal/command prompt inside it:</p>
+            <pre>cd crypto_analyzer</pre>
+        </div>
 
-modularity and abstraction, effective application of
+        <div class="step">
+            <span class="step-number">3</span>
+            <strong>Install Dependencies</strong>
+            <p>Install all required libraries using the provided requirements file:</p>
+            <pre>pip install -r requirements.txt</pre>
+        </div>
 
-the chosen architectural style (e.g., Layered, Event-
-Driven), and clear separation of concerns (e.g.,
+        <div class="step">
+            <span class="step-number">4</span>
+            <strong>Initial Setup (Important)</strong>
+            <p>Run the setup script to download necessary NLTK dictionaries (Stopwords, Lexicons):</p>
+            <pre>python setup.py</pre>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">5</span>
+            <strong>API Key Configuration (Optional)</strong>
+            <p>To use real-time news fetching, rename <code>.env.example</code> to <code>.env</code> and add your CryptoPanic API key. 
+            If skipped, the app runs in <strong>Mock Mode</strong> automatically.</p>
+        </div>
+    </section>
 
-UI/Business Logic/Data Access) regardless of the
-programming paradigm used.
+    <section id="usage">
+        <h2>3. User Manual: How to Use</h2>
+        <p>Launch the application by running the following command:</p>
+        <pre>streamlit run src/dashboard/app.py</pre>
+        
+        <h3>Mode A: Real-Time Market Analysis</h3>
+        <ol>
+            <li>Go to the <strong>"📡 Real-Time Market"</strong> tab.</li>
+            <li>Select a cryptocurrency (e.g., Bitcoin, Ethereum) from the sidebar.</li>
+            <li>Choose a Sentiment Model (<strong>FinBERT</strong> is recommended for finance).</li>
+            <li>Click <strong>"Fetch Market Data"</strong>. The app will:
+                <ul>
+                    <li>Fetch the latest news headlines.</li>
+                    <li>Fetch recent price data (OHLCV) from Yahoo Finance.</li>
+                    <li>Calculate sentiment scores for every headline.</li>
+                </ul>
+            </li>
+            <li><strong>Analyze the Chart:</strong> Scroll down to see the "Price vs. Sentiment" chart. 
+                Look for correlations (e.g., do green sentiment bars precede a price jump?).</li>
+            <li><strong>Search:</strong> Use the "Semantic Search Engine" box to filter news (e.g., type "ETF" to find ETF-related news).</li>
+        </ol>
 
-Bonus Task:
-User Manual
+        <h3>Mode B: Manual Text Analysis (SRS Requirement)</h3>
+        <ol>
+            <li>Go to the <strong>"✍️ Manual Analyzer"</strong> tab.</li>
+            <li>Type any sentence into the text box (e.g., <em>"The market is crashing because of new regulations!"</em>).</li>
+            <li>Click <strong>"Analyze Text"</strong>.</li>
+            <li>The system will display:
+                <ul>
+                    <li><strong>Sentiment Label:</strong> Positive/Negative/Neutral.</li>
+                    <li><strong>Confidence Score:</strong> A value between -1.0 and 1.0.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
 
-1 Absolute
-Mark
+    <section id="architecture">
+        <h2>4. System Architecture & Design</h2>
+        <p>This project adheres to strict Software Engineering principles:</p>
+        <ul>
+            <li><strong>Layered Architecture:</strong> Separation of Presentation (Dashboard), Business Logic (IR Engine), and Data Access (News/Price Fetchers).</li>
+            <li><strong>Factory Pattern:</strong> Used in <code>sentiment.py</code> to dynamically switch between models (VADER vs. FinBERT).</li>
+            <li><strong>Singleton Pattern:</strong> Used in <code>config.py</code> to manage configuration globally.</li>
+            <li><strong>IR Implementation:</strong> Custom TF-IDF Ranker and Text Preprocessing pipeline (Tokenization, Lemmatization).</li>
+        </ul>
+    </section>
 
-Quality of the User Manual, clarity of the
-installation/setup guide, and clarity of the
-instructions to help users use the final product.
+    <section id="troubleshooting">
+        <h2>5. Troubleshooting</h2>
+        <div class="note">
+            <strong>Issue:</strong> "StreamlitInvalidWidthError" or app crash.<br>
+            <strong>Fix:</strong> Ensure you are using the latest code provided. We fixed this by using <code>use_container_width=True</code> instead of <code>width=None</code>.
+        </div>
+        <div class="note">
+            <strong>Issue:</strong> FinBERT score is always 0.<br>
+            <strong>Fix:</strong> This usually means PyTorch is not installed correctly. Run <code>pip install torch</code>. The app will fallback to VADER if FinBERT fails.
+        </div>
+    </section>
 
-Important Notes
- Code Freeze: All coding must cease by the submission deadline if you are
-submitting the link to a GitHub repository. No late commits will be accepted in
-the final review.
- Collaboration: All team members are responsible for the entire codebase and
-must be able to explain any part of the implementation during the viva or final
-demo.
- Start Early: Implementation always takes longer than anticipated. Break the
-project down into small, measurable tasks (e.g., using a Kanban board) and
-commit code frequently.
- No New Features: Focus on implementing the features already specified in your
-SRS, not adding new ones. Scope creep in the final phase is a major risk.
-Good luck with the implementation!
+    <footer>
+        <p>Semester Project - Fall 2025 | Muhammad Saad (BSCS22060)</p>
+    </footer>
+</div>
+
+</body>
+</html>
