@@ -1,0 +1,12 @@
+pandas
+numpy
+nltk
+spacy
+transformers
+torch
+streamlit
+yfinance          
+scikit-learn
+python-dotenv
+requests
+plotly           
